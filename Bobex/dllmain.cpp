@@ -10,29 +10,27 @@ void InitImGui() {
 	ioget.Fonts->AddFontFromMemoryTTF(fontfunc, sizeof(fontfunc), 12.F);
 	ImGuiStyle& style = ImGui::GetStyle();
 	ImGui::StyleColorsDark();
-	/*
-		style.Colors[ImGuiCol_WindowBg] = HexToRGBA("fbff7a");
-		style.Colors[ImGuiCol_TitleBg] = HexToRGBA("4aa840");
-		style.Colors[ImGuiCol_TitleBgActive] = HexToRGBA("a3f3ff");
-		style.Colors[ImGuiCol_TitleBgCollapsed] = HexToRGBA("245b63");
-		style.Colors[ImGuiCol_Button] = HexToRGBA("e3bf8d");
-		style.Colors[ImGuiCol_ButtonHovered] = HexToRGBA("a3712a");
-		style.Colors[ImGuiCol_ButtonActive] = HexToRGBA("d6d01e");
-		style.Colors[ImGuiCol_CheckMark] = HexToRGBA("ed8e79");
-		style.Colors[ImGuiCol_FrameBg] = HexToRGBA("b04a33");
-		style.Colors[ImGuiCol_FrameBgActive] = HexToRGBA("fafafa");
-		style.Colors[ImGuiCol_FrameBgHovered] = HexToRGBA("6cebc0");
-		style.Colors[ImGuiCol_Header] = HexToRGBA("6518d9");
-		style.Colors[ImGuiCol_HeaderActive] = HexToRGBA("6518d9");
-		style.Colors[ImGuiCol_HeaderHovered] = HexToRGBA("0c5925");
-		style.Colors[ImGuiCol_Tab] = HexToRGBA("3eb8d6");
-		style.Colors[ImGuiCol_TabActive] = HexToRGBA("20c1e8");
-		style.Colors[ImGuiCol_TabHovered] = HexToRGBA("169e1d");
-		style.Colors[ImGuiCol_Text] = HexToRGBA("d9e851");
-		style.Colors[ImGuiCol_TextDisabled] = HexToRGBA("1d9629");
-		style.Colors[ImGuiCol_MenuBarBg] = HexToRGBA("ced938");
-		style.Colors[ImGuiCol_PopupBg] = HexToRGBA("121f52");
-	*/
+	style.Colors[ImGuiCol_WindowBg] = HexToRGBA("387864");
+	style.Colors[ImGuiCol_TitleBg] = HexToRGBA("8fb8ab");
+	style.Colors[ImGuiCol_TitleBgActive] = HexToRGBA("a3f3ff");
+	style.Colors[ImGuiCol_TitleBgCollapsed] = HexToRGBA("245b63");
+	style.Colors[ImGuiCol_Button] = HexToRGBA("e3bf8d");
+	style.Colors[ImGuiCol_ButtonHovered] = HexToRGBA("a3712a");
+	style.Colors[ImGuiCol_ButtonActive] = HexToRGBA("d6d01e");
+	style.Colors[ImGuiCol_CheckMark] = HexToRGBA("ed8e79");
+	style.Colors[ImGuiCol_FrameBg] = HexToRGBA("b04a33");
+	style.Colors[ImGuiCol_FrameBgActive] = HexToRGBA("fafafa");
+	style.Colors[ImGuiCol_FrameBgHovered] = HexToRGBA("6cebc0");
+	style.Colors[ImGuiCol_Header] = HexToRGBA("6518d9");
+	style.Colors[ImGuiCol_HeaderActive] = HexToRGBA("6518d9");
+	style.Colors[ImGuiCol_HeaderHovered] = HexToRGBA("0c5925");
+	style.Colors[ImGuiCol_Tab] = HexToRGBA("3eb8d6");
+	style.Colors[ImGuiCol_TabActive] = HexToRGBA("20c1e8");
+	style.Colors[ImGuiCol_TabHovered] = HexToRGBA("169e1d");
+	style.Colors[ImGuiCol_Text] = HexToRGBA("d9e851");
+	style.Colors[ImGuiCol_TextDisabled] = HexToRGBA("1d9629");
+	style.Colors[ImGuiCol_MenuBarBg] = HexToRGBA("ced938");
+	style.Colors[ImGuiCol_PopupBg] = HexToRGBA("121f52");
 	style.Alpha = 1.0F;
 	ImGui_ImplWin32_Init(window);
 	ImGui_ImplDX11_Init(pDevice, pContext);
@@ -40,13 +38,21 @@ void InitImGui() {
 }
 
 void Render_ImGui() {
-	ImGuiWindowFlags flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings;
+	ImGuiWindowFlags flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_MenuBar;
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 	ImGui::Begin("Bobex By RiritoNinigaya", 0, flags);
 	ImGui::SetWindowSize(ImVec2(330.F, 330.F));
-	ImGui::TextColored(ImVec4(155.F, 200.F, 30.F, 255.F), "Welcome to My New IL2Cpp Mod For Game PCBS2... Enjoy!!!");
+	if (ImGui::BeginMenuBar()) {
+		if (ImGui::BeginMenu("Donation")) 
+		{
+			ImGui::Text("Soon!!!");
+			ImGui::EndMenu();
+		}
+		ImGui::EndMenuBar();
+	}
+	ImGui::TextColored(HexToRGBA("b83018"), "Welcome to My New IL2Cpp Mod For Game PCBS2... Enjoy!!!");
 	if (ImGui::Button("Unlimited Money", ImVec2(125.F, 125.F))) {
 		PrintCMD("Soon!!!");
 	}
